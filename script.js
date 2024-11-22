@@ -5,11 +5,11 @@ let flippedCards = [];
 let matchedCards = 0;
 let isGameOver = false;
 
-// Generate pairs of numbers for the cards
+
 const generateCards = () => {
-    const values = [1, 2, 3, 4, 5, 6, 7, 8]; // You can add more pairs
+    const values = [1, 2, 3, 4, 5, 6, 7, 8]; 
     const cardValues = [...values, ...values];
-    cardValues.sort(() => Math.random() - 0.5); // Shuffle cards
+    cardValues.sort(() => Math.random() - 0.5); 
 
     cardValues.forEach(value => {
         const card = document.createElement('div');
