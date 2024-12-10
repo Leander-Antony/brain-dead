@@ -5,8 +5,10 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f3f3f3;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #ff6f61, #ffbc42, #00bcd4);
+    background-size: 300% 300%;
+    animation: gradientBackground 10s ease infinite;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,53 +16,104 @@ body {
     margin: 0;
 }
 
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 .game-container {
     text-align: center;
-    background-color: white;
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    width: 380px;
+    position: relative;
+    z-index: 1;
 }
 
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
+    color: #333;
 }
 
 .game-board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    max-width: 280px;
-    margin: 0 auto;
+    margin: 20px 0;
 }
 
 .card {
-    width: 60px;
-    height: 60px;
-    background-color: #f0f0f0;
+    width: 70px;
+    height: 70px;
+    background-color: #333;
     border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
     user-select: none;
+    color: transparent; 
+    position: relative;
 }
 
 .card.flipped {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #333; 
+    z-index: 2;
 }
 
 .card.matched {
     background-color: #4CAF50;
     color: white;
+    pointer-events: none; 
+}
+
+.card:hover {
+    transform: scale(1.1); 
 }
 
 #message {
     margin-top: 20px;
     font-size: 16px;
+    font-weight: bold;
+    color: #333;
 }
+
+.status {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #666;
+}
+
+.restart {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.restart:hover {
+    background-color: #E64A19;
+}
+
+
+
