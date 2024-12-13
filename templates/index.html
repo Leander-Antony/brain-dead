@@ -53,11 +53,6 @@
     <div class="credits">
         Made by <a href="https://github.com/Leander-Antony" target="_blank">Zoro</a> and <a href="https://github.com/Madhu-mitha17" target="_blank">Madhumitha</a>
     </div>
-    <script>
-        let encodedContent = "VGhpcyBpcyB0aGUgc2VjcmV0IGNvbnRlbnQgeW91IHdhbnQgdG8gb2JmdXNjb2F0ZQ==";
-        let decodedContent = atob(encodedContent); // atob() decodes Base64 to a readable string
-        document.getElementById('game-container').innerText = decodedContent;
-    </script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
