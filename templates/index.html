@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is your 🧠 dead?? 💀</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Brain Dead (🧠💀)</h1>
+        <div class="game-board" id="game-board"></div>
+        <p id="message"></p>
+        <div class="status">
+            <div class="moves" id="moves">Moves: 0</div>
+            <div class="time" id="time">Time: 0 sec</div>
+        </div>
+        <div class="score" id="score">Score: 1000</div>
+
+        <!-- Button container for side-by-side buttons -->
+        <div class="button-container">
+            <button class="button restart" onclick="restartGame()">Restart</button>
+            <button id="viewLeaderboardBtn" class="button view-leaderboard-btn">Leaderboard</button>
+        </div>
+        
+
+    <!-- Modal for Leaderboard -->
+    <div id="leaderboardModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeLeaderboardModal()">&times;</span>
+            <h2>Leaderboard</h2>
+            <ul id="leaderboard-list">
+                <!-- Leaderboard items will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal for Name Input -->
+    <div id="nameModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Enter Your Name</h2>
+            <form id="nameForm">
+                <input type="text" id="playerName" placeholder="Enter your name" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

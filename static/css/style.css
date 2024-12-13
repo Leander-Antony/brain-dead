@@ -1,0 +1,314 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(45deg, #ff6f61, #ffbc42, #00bcd4);
+    background-size: 300% 300%;
+    animation: gradientBackground 12s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.game-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.card {
+    width: 80px;
+    height: 80px;
+    background-color: #333;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    color: transparent;
+    position: relative;
+}
+
+.card.flipped {
+    background-color: #fff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    color: #333;
+    z-index: 2;
+}
+
+.card.matched {
+    background-color: #4CAF50;
+    color: white;
+    pointer-events: none;
+}
+
+.card:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#message {
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.status {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #666;
+}
+
+.restart, .view-leaderboard-btn {
+    padding: 12px 24px;
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.restart:hover, .view-leaderboard-btn:hover {
+    background-color: #E64A19;
+}
+
+.score {
+    margin-top: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Leaderboard styles */
+.leaderboard {
+    position: fixed;
+    top: 10%;
+    right: 0;
+    transform: translateY(0);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 25px;
+    border-radius: 8px;
+    width: 280px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    transition: right 0.3s ease;
+}
+
+.leaderboard h2 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff5722;
+    font-weight: 700;
+}
+
+#leaderboard-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+
+#leaderboard-list li {
+    padding: 15px;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    justify-content: space-between;
+    transition: background-color 0.3s ease;
+}
+
+#leaderboard-list li:last-child {
+    border-bottom: none;
+}
+
+#leaderboard-list li span {
+    font-weight: bold;
+}
+
+#leaderboard-list li:hover {
+    background-color: #FF5722;
+    cursor: pointer;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 350px;
+    margin: 10% auto;
+    text-align: center;
+}
+
+#playerName {
+    width: 80%;
+    padding: 12px;
+    margin: 15px 0;
+    font-size: 18px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+button {
+    padding: 12px;
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #E64A19;
+}
+
+.close-btn {
+    font-size: 32px;
+    color: #aaa;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-btn:hover {
+    color: black;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .game-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .game-board {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    .card {
+        width: 70px;
+        height: 70px;
+        font-size: 22px;
+    }
+
+    .leaderboard {
+        width: 240px;
+    }
+
+    #leaderboard-list li {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .game-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+    }
+
+    .leaderboard {
+        width: 200px;
+        top: 15%;
+    }
+
+    #leaderboard-list li {
+        font-size: 12px;
+    }
+}
+
+/* Flex container for buttons */
+.button-container {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    gap: 20px; /* Adds space between the buttons */
+    margin-top: 20px; /* Adds some space above the buttons */
+}
+
+/* Button height adjustments */
+.button {
+    height: 25%;
+    width: 50%;
+}
