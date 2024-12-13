@@ -38,7 +38,7 @@ def submit_score():
 @app.route('/get-leaderboard', methods=['GET'])
 def get_leaderboard():
     # Fetch the leaderboard from the database
-    leaderboard = list(data_collection.find().sort("score", -1).limit(10))
+    leaderboard = list(data_collection.find().sort("score", -1).limit(5))
 
     # Convert to JSON-friendly format
     leaderboard_data = [{'player_name': entry['player_name'], 'score': entry['score']} for entry in leaderboard]
