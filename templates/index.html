@@ -25,27 +25,33 @@
         </div>
         
 
-    <!-- Modal for Leaderboard -->
-    <div id="leaderboardModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeLeaderboardModal()">&times;</span>
-            <h2>Leaderboard</h2>
-            <ul id="leaderboard-list">
-                <!-- Leaderboard items will be dynamically added here -->
-            </ul>
+        <!-- Modal for Leaderboard -->
+        <div id="leaderboardModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeLeaderboardModal()">&times;</span>
+                <h2>Leaderboard</h2>
+                <ul id="leaderboard-list">
+                    <!-- Leaderboard items will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- Modal for Name Input -->
+        <div id="nameModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h2>Enter Your Name</h2>
+                <form id="nameForm">
+                    <input type="text" id="playerName" placeholder="Enter your name" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 
-    <!-- Modal for Name Input -->
-    <div id="nameModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2>Enter Your Name</h2>
-            <form id="nameForm">
-                <input type="text" id="playerName" placeholder="Enter your name" required>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+    <!-- Credits Section -->
+    <div class="credits">
+        Made by <a href="https://github.com/Leander-Antony" target="_blank">Zoro</a> and <a href="https://github.com/Madhu-mitha17" target="_blank">Madhumitha</a>
     </div>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>

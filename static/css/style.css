@@ -312,3 +312,23 @@ button:hover {
     height: 25%;
     width: 50%;
 }
+.credits {
+    position: absolute;
+    bottom: 10px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.4); /* Transparent text */
+    text-align: center;
+    width: 100%;
+    font-weight: normal;
+}
+
+.credits a {
+    color: rgba(255, 255, 255, 0.5); /* Slightly more visible link */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.credits a:hover {
+    color: #ff5722; /* Color change on hover */
+}
