@@ -220,3 +220,28 @@ document.addEventListener('keydown', function (e) {
         e.preventDefault();  // Disable copy keyboard shortcuts
     }
 });
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+        e.preventDefault(); // Disable F12 and Ctrl+Shift+I (DevTools)
+    }
+});
+
+let isDevToolsOpen = false;
+
+setInterval(function() {
+    const devToolsWidth = window.outerWidth - window.innerWidth > 100; // Check if the outer window width exceeds inner width
+    const devToolsHeight = window.outerHeight - window.innerHeight > 100; // Check if the outer window height exceeds inner height
+
+    if (devToolsWidth || devToolsHeight) {
+        isDevToolsOpen = true;
+    } else {
+        isDevToolsOpen = false;
+    }
+
+    if (isDevToolsOpen) {
+        alert('Please close the developer tools!');
+        window.location.reload(); // Reload the page to enforce closure
+    }
+}, 1000);
+
