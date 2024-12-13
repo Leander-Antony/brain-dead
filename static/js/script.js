@@ -229,19 +229,24 @@ document.addEventListener('keydown', function(e) {
 
 let isDevToolsOpen = false;
 
-setInterval(function() {
-    const devToolsWidth = window.outerWidth - window.innerWidth > 100; // Check if the outer window width exceeds inner width
-    const devToolsHeight = window.outerHeight - window.innerHeight > 100; // Check if the outer window height exceeds inner height
+function detectDevTools() {
+    const threshold = 160; // Adjust as needed to detect DevTools opening
 
-    if (devToolsWidth || devToolsHeight) {
+    // Try to access a deep property to measure execution time
+    const start = new Date().getTime();
+    debugger; // Adding a breakpoint manually
+    const end = new Date().getTime();
+
+    if (end - start > threshold) {
         isDevToolsOpen = true;
-    } else {
-        isDevToolsOpen = false;
     }
 
     if (isDevToolsOpen) {
         alert('Please close the developer tools!');
         window.location.reload(); // Reload the page to enforce closure
     }
-}, 1000);
+}
+
+// Check for DevTools every second
+setInterval(detectDevTools, 3000);
 
