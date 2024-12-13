@@ -210,3 +210,13 @@ function populateLeaderboard() {
 
 // Call the populateLeaderboard function when the page loads or after a game is finished
 populateLeaderboard();
+
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();  // Disable right-click
+});
+
+document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+        e.preventDefault();  // Disable copy keyboard shortcuts
+    }
+});
